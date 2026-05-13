@@ -1,0 +1,1 @@
+<template><AppShell><PageHeader title="Dispatches Report"/><pre class="card overflow-auto p-5 text-xs">{{ records }}</pre></AppShell></template><script>import AppShell from '../../Components/AppShell.vue'; import PageHeader from '../../Components/PageHeader.vue'; export default{components:{AppShell,PageHeader},props:{records:Array}}</script>

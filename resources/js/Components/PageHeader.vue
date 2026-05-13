@@ -1,0 +1,2 @@
+<template><div class="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"><div><p class="text-xs font-bold uppercase tracking-widest text-gold">Vic Enterprise LMS</p><h1 class="font-display text-3xl font-extrabold text-navy">{{ title }}</h1><p v-if="subtitle" class="mt-1 text-slate-600">{{ subtitle }}</p></div><div><slot /></div></div></template>
+<script>export default { props: { title: String, subtitle: String } }</script>

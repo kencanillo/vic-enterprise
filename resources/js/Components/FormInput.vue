@@ -1,0 +1,2 @@
+<template><label class="block"><span class="label">{{ label }}</span><input :type="type || 'text'" class="input mt-1" :value="modelValue" :placeholder="placeholder" @input="$emit('update:modelValue', $event.target.value)" /><span v-if="error" class="mt-1 block text-xs font-bold text-red-600">{{ error }}</span></label></template>
+<script>export default { props: { label: String, modelValue: [String, Number], type: String, placeholder: String, error: String }, emits: ['update:modelValue'] }</script>

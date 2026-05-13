@@ -1,0 +1,2 @@
+<template><div class="card p-5"><div class="text-xs font-bold uppercase tracking-widest text-slate-500">{{ label }}</div><div class="mt-3 font-display text-3xl font-extrabold text-navy">{{ value }}</div><div v-if="hint" class="mt-4 text-sm text-slate-500">{{ hint }}</div></div></template>
+<script>export default { props: { label: String, value: [String, Number], hint: String } }</script>
