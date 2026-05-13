@@ -35,4 +35,4 @@ fi
 
 php artisan config:cache
 
-php artisan serve --host=0.0.0.0 --port="${PORT:-80}"
+php artisan serve --host=0.0.0.0 --port="${APP_HTTP_PORT:-80}"
