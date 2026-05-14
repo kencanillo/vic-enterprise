@@ -3,6 +3,20 @@ set -eu
 
 cd /app
 
+if [ -n "${RAILWAY_PUBLIC_DOMAIN:-}" ]; then
+    case "${APP_URL:-}" in
+        ""|http://localhost|https://localhost)
+            export APP_URL="https://${RAILWAY_PUBLIC_DOMAIN}"
+            ;;
+    esac
+fi
+
+case "${APP_URL:-}" in
+    https://*)
+        export SESSION_SECURE_COOKIE="${SESSION_SECURE_COOKIE:-true}"
+        ;;
+esac
+
 mkdir -p storage/framework/sessions
 mkdir -p storage/framework/views
 mkdir -p storage/framework/cache
@@ -25,6 +39,8 @@ fi
 
 # Railpack may cache config during build before runtime variables are final.
 php artisan config:clear
+php artisan route:clear
+php artisan view:clear
 
 echo "Running migrations and seeding database ..."
 php artisan migrate --force
@@ -35,4 +51,4 @@ fi
 
 php artisan config:cache
 
-php artisan serve --host=0.0.0.0 --port="${APP_HTTP_PORT:-80}"
+php artisan serve --host=0.0.0.0 --port="${PORT:-${APP_HTTP_PORT:-80}}"
